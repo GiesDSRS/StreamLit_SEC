@@ -11,19 +11,12 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import re
 
-load_dotenv()
+load_dotenv() # read .env file variables
 
 # MinIO configurations
 MINIO_ENDPOINT = 's3.dsrs.illinois.edu'
 MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY') 
 MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY')
-=======
-import re
-
-# MinIO configurations
-MINIO_ENDPOINT = 's3.dsrs.illinois.edu'
-MINIO_ACCESS_KEY = 'Ll667pzVdQaxgp9a4OLW'
-MINIO_SECRET_KEY = 'i7Tk2RRwhhnfZMI0Ug6wvpQ6X2rBsJRBhlCQy23L'
 MINIO_BUCKET_NAME = '10-k'
 MINIO_SECURE = True
 
@@ -111,9 +104,6 @@ def download_and_upload_10k_files(company_name, year):
 # Streamlit App
 
 st.title('SEC 10-K Filings')
-=======
-st.title('SEC 10-K Filings Downloader & Uploader to MinIO')
-
 
 input_data = st.text_input("Enter the company name or CIK:")
 
@@ -137,8 +127,6 @@ if input_data:
 
 
     if st.button('Download 10-K filings'):
-=======
-    if st.button('Download and Upload 10-K filings'):
 
         with st.spinner('Processing... Downloading from SEC, cleaning, and uploading. Please wait...'):
             with concurrent.futures.ThreadPoolExecutor() as executor:
